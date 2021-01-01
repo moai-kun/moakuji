@@ -141,9 +141,12 @@ function kusudama() {
   newSpan2.appendChild(newContent2)
   parentDiv.appendChild(newSpan2);
 
+  let newSpan3 = document.createElement('span');
+  newSpan3.setAttribute("style", "z-index: 400");
+  newSpan3.setAttribute("class", "mar-offset");
   let newContent3 = document.createTextNode(rand_kuji2)
-  parentDiv.appendChild(newContent3);
-
+  newSpan3.appendChild(newContent3)
+  parentDiv.appendChild(newSpan3);
 
   class Paper{
     constructor(num, width, G, color, startX, finishX) {
