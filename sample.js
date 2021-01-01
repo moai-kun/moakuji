@@ -153,19 +153,20 @@ function kusudama() {
   parentDiv.appendChild(newSpan3);
 
   class Paper{
-    constructor(num, width, G, color, startX, finishX) {
+    constructor(num, width, G, color, startX, startY, finishX) {
       this.num = num; //ナンバー idが"paper(num)"となる
       this.width = width; // 大きさ
       this.G = G; // 初速度
       this.D = 5; //遅延度
       this.startX = startX // 初期位置(x座標)
+      this.startY = startY // 初期位置(y座標)
       this.finishX = finishX // 最終位置(x座標)
       this.newElement = document.createElement("img"); // img要素作成
       this.newElement.setAttribute("id","paper"+num); // img要素にidを設定
       this.newElement.setAttribute("class",color); // img要素にclassを設定
       this.newElement.setAttribute("src","./pictures/moai.png"); // img要素にsrcを設定
       this.newElement.setAttribute("width",this.width+"px"); // img要素にwidthを設定
-      this.newElement.setAttribute("style","position: absolute; left: "+(this.startX)+"px; top: 30px; z-index:800;"); // img要素にstyleを設定
+      this.newElement.setAttribute("style","position: absolute; left: "+(this.startX)+"px; top: "+(this.startY)+"px; z-index:800;"); // img要素にstyleを設定
       let parentDiv = document.getElementById("parent-papers"); // 親要素（div）への参照を取得
       parentDiv.appendChild(this.newElement); // 追加
     }
@@ -176,13 +177,14 @@ function kusudama() {
   let rand_width = 0;
   let rand_G = 0;
   for (let i = 0; i < 60; i++) {
-    rand_width = 20 + Math.floor( Math.random()*10 - 5 );
+    rand_width = 20 + Math.floor( Math.random()*20 - 10 );
     rand_G = 7 + Math.random()*6 - 3;
     rand_color = colors[Math.floor( Math.random()*colors.length )];
-    rand_X = Math.floor( Math.random()*30 - 15 );
+    rand_X = Math.floor( Math.random()*60 - 30 );
     rand_startX = win_width/2 + rand_X;
-    rand_finishX = win_width/2 + rand_X*4;
-	  papers.push( new Paper(i, rand_width, rand_G, rand_color, rand_startX, rand_finishX) );
+    rand_startY = 20+Math.floor( Math.random()*10 - 5 );
+    rand_finishX = win_width/2 + rand_X*1.7;
+	  papers.push( new Paper(i, rand_width, rand_G, rand_color, rand_startX, rand_startY, rand_finishX) );
   }
   console.log(papers[0].num)
 
@@ -207,15 +209,16 @@ function movepaper(papers, length){
   }).then(() => { // 上記処理後に紙吹雪を動かすs
     let t = 0, // 時間
         X = 0, // X座標
-        Y = 0; // Y座標
+        Y = 0, // Y座標
+        dx = 0.5
 
     function draw_pa(){
-      t += 1;
+      t += dx;
       let icount = 0; //カウント
       let rmCount = 0; //削除する要素のカウント
       for (let paper of papers) {
         X = paper.startX + (paper.finishX - paper.startX)*(t/20)
-        Y = 30+ 0.5*paper.G*t^2
+        Y = paper.startY+ 0.5*paper.G*t^2
         $('#paper'+paper.num).animate({
           'left': (X+'px'),
           'top': (Y+'px')
@@ -229,6 +232,10 @@ function movepaper(papers, length){
       }
       for (let i = 0; i < rmCount; i++) {
         papers.splice(0, 1)
+      }
+      dx += 0.02
+      if (dx > 1) {
+        dx = 1;
       }
       if (papers.length != 0){ // 一つが画面外(横)に出たら終了
         draw_pa();
