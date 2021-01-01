@@ -11,7 +11,6 @@
 
 
 .slowly {
-/*    transform: translateZ(800px); */
     animation: rot 0.5s linear infinite;
 }
 @keyframes rot {
@@ -21,18 +20,17 @@
 
 
 
-
+/*
 .mar-offset {
     margin: 0px 0px -80px 0px;
 }
+*/
 /*縦書き対応*/
 .text-combine {
     color: #000000;
-/*    margin: -20px 0px -20px 0px; */
     -webkit-text-combine: horizontal;
     -ms-text-combine-horizontal: all;
     text-combine-upright: all;
-/*    writing-mode: horizontal-tb; */
 }
 .redfont {
     color: #ff0000;

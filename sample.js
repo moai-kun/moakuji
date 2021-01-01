@@ -98,7 +98,7 @@ function kusudama() {
   if (rand_kuji <= 45) {
     rand_kuji = 0 // 大吉
     setTimeout(() => {
-      document.body.style.backgroundImage = "url('./pictures/moai.gif')";
+      document.body.style.backgroundImage = "url('./pictures/moai1.gif')";
     }, 500)
   }
   else if (rand_kuji <= 55)
@@ -111,8 +111,12 @@ function kusudama() {
     rand_kuji = 4 // 末吉
   else if (rand_kuji <= 95)
     rand_kuji = 5 // 凶
-  else
+  else {
     rand_kuji = 6 // 大凶
+    setTimeout(() => {
+      document.body.style.backgroundImage = "url('./pictures/moai2.gif')";
+    }, 500)
+  }
 
   rand_kuji1 = kuji1[rand_kuji]
   rand_kuji2 = kuji2[rand_kuji]
