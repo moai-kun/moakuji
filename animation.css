@@ -24,6 +24,9 @@
 .text-combine {
     color: #000000;
     margin: -20px 0px -20px 0px;
+    -webkit-text-combine: horizontal;
+    -ms-text-combine-horizontal: all;
+    text-combine-upright: all;
     writing-mode: horizontal-tb;
 }
 .redfont {
