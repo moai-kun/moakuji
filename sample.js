@@ -133,6 +133,7 @@ function kusudama() {
   parentDiv = document.getElementById("flag"); // 親要素（div）への参照を取得
 
   let newSpan1 = document.createElement('span');
+  newSpan1.setAttribute("class", "red-font");
   newSpan1.setAttribute("style", "z-index: 400");
   let newContent1 = document.createTextNode(rand_kuji1)
   newSpan1.appendChild(newContent1)
@@ -147,7 +148,7 @@ function kusudama() {
 
   let newSpan3 = document.createElement('span');
   newSpan3.setAttribute("style", "z-index: 400");
-  newSpan3.setAttribute("class", "mar-offset");
+  newSpan3.setAttribute("class", "red-font mar-offset");
   let newContent3 = document.createTextNode(rand_kuji2)
   newSpan3.appendChild(newContent3)
   parentDiv.appendChild(newSpan3);

@@ -15,10 +15,33 @@
 }
 @keyframes rot {
     0% {transform: rotate(0deg) scale(1.0, 1.0) }
-    25% {transform: rotate(90deg) scale(0.4, 1.0) }
-    50% {transform: rotate(180deg) scale(1.0, 1.0) }
-    75% {transform: rotate(270deg) scale(0.4, 1.0) }
+    25% {transform: rotate(90deg) scale(0.6, 1.0) }
+    50% {transform: rotate(180deg) scale(0.3, 1.0) }
+    75% {transform: rotate(270deg) scale(0.6, 1.0) }
     100% {transform: rotate(360deg) scale(1.0, 1.0) }
+}
+
+
+.flag {
+    top: 20px;
+    transform-origin: center top;
+    background-color: white;
+    padding: 30px 0px 30px 0px;
+    border: solid 1px black;
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+    animation: test1 1s linear forwards, test2 1s 1s linear infinite;
+}
+@keyframes test1 {
+    0% {transform: scale(1.0, 0) }
+    100% {transform: scale(1.0, 1.0) }
+}
+@keyframes test2 {
+    0%    {text-shadow: 0 0 0px rgba(0,0,0,1);}
+    25%   {text-shadow: 0 0 1px rgba(0,0,0,1);}
+    50%   {text-shadow: 0 0 2px rgba(0,0,0,1);}
+    75%   {text-shadow: 0 0 1px rgba(0,0,0,1);}
+    100%  {text-shadow: 0 0 0px rgba(0,0,0,1);}
 }
 
 /*縦書き対応*/
@@ -28,24 +51,17 @@
     -ms-text-combine-horizontal: all;
     text-combine-upright: all;
 }
-.redfont {
-    color: #ff0000;
-}
-.flag {
-    top: 20px;
-    transform-origin: center top;
-    background-color: white;
-    padding: 30px 0px 30px 0px;
-    border: solid 1px black;
-    color: #ff0000;
-    -ms-writing-mode: tb-rl;
-    writing-mode: vertical-rl;
-    animation: testing 1s linear forwards;
-}
 
-@keyframes testing {
-    0% {transform: scale(1.0, 0) }
-    100% {transform: scale(1.0, 1.0) }
+.red-font {
+    color: #ff0000;
+    animation: test3 1s 1s linear infinite;
+}
+@keyframes test3 {
+    0%    {text-shadow: 0 0 0px rgba(255,0,0,1);}
+    25%   {text-shadow: 0 0 1px rgba(255,0,0,1);}
+    50%   {text-shadow: 0 0 2px rgba(255,0,0,1);}
+    75%   {text-shadow: 0 0 1px rgba(255,0,0,1);}
+    100%  {text-shadow: 0 0 0px rgba(255,0,0,1);}
 }
 
 .rotLeft {
